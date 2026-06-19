@@ -34,7 +34,7 @@ function ProfilePage() {
             setUserProfile(authState.user);
 
             const post = (postReducer.posts || []).filter((post) => {
-                return post.userId?.username === authState.user.userId.username;
+                return post.userId?.username === authState.user.userId?.username;
             });
 
             setUserPosts(post);
@@ -148,7 +148,7 @@ function ProfilePage() {
                         <div className={styles.workHistory}>
                             <h4>Work History</h4>
                             <div className={styles.workHistoryContainer}>
-                                {userProfile.pastWork?.map((work, index) => {
+                                {(userProfile.pastWork || []).map((work, index) => {
                                     return (
                                         <div key={index} className={styles.workHistoryCard}>
                                             <p style={{ fontWeight: "bold", display: "flex", alignItems: "center", gap: "0.8rem" }}>
@@ -167,7 +167,7 @@ function ProfilePage() {
                             </div>
                         </div>
 
-                        {userProfile != authState.user &&
+                        {userProfile?.userId?.username !== authState?.user?.userId?.username &&
                             <div onClick={() => {
                                 updateProfileData();
                             }} className={styles.updateProfileBtn}>
