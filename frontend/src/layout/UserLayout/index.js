@@ -1,6 +1,5 @@
-import NavBarComponent from '@/components/Navbar'
 import React from 'react'
-
+import NavBarComponent from '@/components/NavBar'
 function UserLayout({children}) {
   return (
     <div>
